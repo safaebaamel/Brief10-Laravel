@@ -29,6 +29,6 @@ Artisan: <br> Artisan est le nom de l'interface de ligne de commande incluse ave
 
 Composer: <br> Composer est un gestionnaire de packages au niveau de l'application pour le langage de programmation PHP qui fournit un format standard pour la gestion des dépendances du logiciel PHP et des bibliothèques requises.
 
-ORM: <br>
+ORM: <br> Laravel inclut Eloquent, un mappeur objet-relationnel (ORM) qui rend agréable l'interaction avec votre base de données. Lors de l'utilisation d'Eloquent, chaque table de base de données a un "Modèle" correspondant qui est utilisé pour interagir avec cette table. En plus de récupérer des enregistrements de la table de base de données, les modèles Eloquent vous permettent également d'insérer, de mettre à jour et de supprimer des enregistrements de la table.
 
 Migration: <br>
