@@ -25,7 +25,7 @@ Vue.js optionnel
 
 # Defitions des Mots Techniques!
 
-Artisan: <br> Artisan est le nom de l'interface de ligne de commande incluse avec Laravel. Il fournit un certain nombre de commandes utiles pour votre utilisation lors du développement de votre application. Il est piloté par le puissant composant Symfony Console. <strong> 'php artisan list' pour afficher toute les commabndes artisan dispo </strong>
+Artisan: <br> Artisan est le nom de l'interface de ligne de commande incluse avec Laravel. Il fournit un certain nombre de commandes utiles pour votre utilisation lors du développement de votre application. Il est piloté par le puissant composant Symfony Console. <strong> 'php artisan list' pour afficher toute les commandes artisan dispo </strong>
 
 Composer: <br>
 
