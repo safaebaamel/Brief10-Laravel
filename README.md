@@ -31,4 +31,4 @@ Composer: <br> Composer est un gestionnaire de packages au niveau de l'applicati
 
 ORM: <br> Laravel inclut Eloquent, un mappeur objet-relationnel (ORM) qui rend agréable l'interaction avec votre base de données. Lors de l'utilisation d'Eloquent, chaque table de base de données a un "Modèle" correspondant qui est utilisé pour interagir avec cette table. En plus de récupérer des enregistrements de la table de base de données, les modèles Eloquent vous permettent également d'insérer, de mettre à jour et de supprimer des enregistrements de la table.
 
-Migration: <br>
+Migration: <br> Les migrations sont comme le contrôle de version de votre base de données, permettant à votre équipe de définir et de partager la définition du schéma de base de données de l'application. Si vous avez déjà dû demander à un coéquipier d'ajouter manuellement une colonne à son schéma de base de données locale après avoir extrait vos modifications du contrôle de source, vous avez été confronté au problème que les migrations de base de données résolvent.
