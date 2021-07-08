@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex justify-center">
-        <div class="w-4/12 bg-white p-6 rounded-lg">
+    <div class="flex justify-center py-6">
+        <div class="w-4/12 bg-white p-6 rounded-lg pt-6">
             <h1 class="text-center p-4 text-4xl uppercase"> Login Here </h1>
             @if (session('status'))
                 <div class="bg-red-600 p-4 rounded-lg mb-6 text-white">

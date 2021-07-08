@@ -8,22 +8,22 @@
     <title>Posty</title>
 </head>
 <body class="bg-gray-200">
-    <nav class="p-6 bg-white flex justify-between mb-6">
+    <nav class="p-6 bg-white flex justify-between">
         <ul class="flex items-center">
             <li>
                 <a href="{{ route('home') }}"  class="p-3">Home</a>
             </li>
             <li>
-                <a href="" class="p-3">Dashboard</a>
+                <a href="{{ route('dashboard')}}" class="p-3">Dashboard</a>
             </li>
             <li>
-                <a href="" class="p-3">Post</a>
+                <a href="{{ route('posts') }}" class="p-3">Post</a>
             </li>
         </ul>
         <ul class="flex items-center">
             @auth
                 <li>
-                    <a href="" class="p-3">Name</a>
+                    <a href="" class="p-3">{{ auth()->user()->username }}</a>
                 </li>
                 <li>
                     <form action="{{ route('logout')}}" class="p-3" method="POST">
