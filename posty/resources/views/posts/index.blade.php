@@ -6,15 +6,11 @@
             <form action="{{ route('posts') }}" method="post">
             @csrf
                 <div class="mb-4">
-                    <h1 class="text-3xl px-2 my-3"> Any League Players? </h1>
-                    <img src='https://c4.wallpaperflare.com/wallpaper/713/570/521/league-of-legends-irelia-wallpaper-preview.jpg' alt="leagueoflegend" width="500" height="500">
-                </div>
-                <div class="mb-4">
                     <label for="body" class="sr-only" > Body </label>
                     <textarea name="body" id="body" cols="10" rows="1" class="bg-gray-100 border-2 
                     w-full p-4 rounded-lg @error('body') border-red-500
                         
-                    @enderror" placeholder="Your Message Here!"></textarea>
+                    @enderror" placeholder="Your Post!"></textarea>
                     @error('body')
                         <div class="text-red-500 mt-2 text-sm">
                             {{ $message }}
@@ -41,13 +37,15 @@
                                     @method('DELETE')
                                     <button type="submit" class="text-red-900">Delete</button>
                                 </form>
+                                <form action="{{ route('posts.edit', $post) }}" method="get">
+                                    <button type="submit" class="text-red-900">Edit
+                                </form>
                             </div>
                         @endif
                         <div class="flex items-center">
-                            <form action="{{ route('posts.likes', $post) }}" method="POST" class="mr-1">
-                                <button type="submit" class="text-blue-900">Like</button>
+                            <form action="#" method="POST" class="mr-1">
+                                <button type="submit" class="text-blue-900">Comment</button>
                             </form>
-                            <span>{{ $post->likes->count() }} Likes</span>
                         </div>
                         
                         @endauth

@@ -8,7 +8,7 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index() {
-        $posts = Post::paginate(3);
+        $posts = Post::latest()->with(['user', 'likes'])->paginate(3);
         return view('posts.index', [
             'posts' => $posts
         ]);
@@ -35,4 +35,23 @@ class PostController extends Controller
 
         return back();
     }
+
+    public function edit(Post $post) {
+
+        return view('posts.edit', ['post' => $post]);
+    }
+
+    public function update(Post $post)
+    {
+        request()->validate([
+            'content' => 'required',
+        ]);
+
+        $post->update([
+            'body' => request('content'),
+        ]);
+
+        return redirect('/posts');
+    }
 }
+
