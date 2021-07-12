@@ -7,9 +7,9 @@
             @csrf
                 <div class="mb-4">
                     <label for="body" class="sr-only" > Body </label>
-                    <textarea name="body" id="body" cols="10" rows="1" class="bg-gray-100 border-2 
+                    <textarea name="body" id="body" cols="10" rows="1" class="bg-gray-100 border-2
                     w-full p-4 rounded-lg @error('body') border-red-500
-                        
+
                     @enderror" placeholder="Your Post!"></textarea>
                     @error('body')
                         <div class="text-red-500 mt-2 text-sm">
@@ -43,15 +43,15 @@
                             </div>
                         @endif
                             <div class="flex items-center">
-                                <form action="{{ url('save-comment/'.$detail->id) }}" method="POST" class="mr-1">
-                                    <input type="text" class="bg-gray-100 border-2 
+                                <form action="" method="POST" class="mr-1">
+                                    <input type="text" class="bg-gray-100 border-2
                     w-full p-4 rounded-lg">
                                     <button type="submit" class="text-blue-900 border-gray-400">Comment</button>
                                 </form>
                             </div>
-                        
+
                         @endauth
-                        
+
                     </div>
                 @endforeach
                 {{ $posts->links() }}

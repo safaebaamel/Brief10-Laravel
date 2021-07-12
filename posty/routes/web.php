@@ -48,7 +48,4 @@ Route::put('/posts/{post}', [PostController::class, 'update']);
 Route::post('/posts/{post}/likes', [postLikeController::class, 'store'])->name('posts.likes');
 
 // Admin Routes
-Route::get('/admin/login',[AdminController::class,'loginAdmin'])->name('loginAdmin');
-Route::post('/admin/login',[AdminController::class,'submit_login'])->name('submit_login');
-// Route::get('/admin/logout',[AdminController::class,'logout']);
-Route::get('/admin/dashboard',[AdminController::class,'dashboard']);
+Route::get('/AdminHome',[DashboardController::class,'admin'])->name('AdminHome')->middleware('is_admin');

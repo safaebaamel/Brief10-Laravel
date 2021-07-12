@@ -13,16 +13,27 @@ class LoginController extends Controller
     }
 
     public function store(Request $request) {
+        $input = $request->all();
+
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
 
-        if (!auth()->attempt($request->only('email', 'password'))) {
-            return back()->with('status', 'Invalid Login Infos!!!');
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->is_admin == 1) {
+                return redirect()->route('AdminHome');
+            }else{
+                return redirect()->route('dashboard');
+            }
+        }else{
+            return redirect()->route('login')
+                ->with('error','Email-Address And Password Are Wrong.');
         }
 
-        return redirect()->route('dashboard');
     }
+
+
 }
