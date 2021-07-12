@@ -27,11 +27,12 @@
 
                 @foreach($posts as $post)
                     <div class="mb-4 p-1">
+                        <!-- {{var_dump(auth()->user()->is_admin)}} -->
                         <a href="" class="font-bold">{{ $post->user->name }}</a><span class="text-gray-600 text-sm p-4">{{$post->created_at->diffForHumans()}}</span>
                         <p class="mb-2">{{$post->body}}</p>
                         @auth
-                        @if ($post->ownedBy(auth()->user()))
-                            <div>
+                        @if ($post->ownedBy(auth()->user()) || auth()->user()->is_admin===1)
+                        <div>
                                 <form action="{{ route('posts.destroy', $post) }}" method="post">
                                     @csrf
                                     @method('DELETE')
