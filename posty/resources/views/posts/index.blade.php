@@ -6,6 +6,7 @@
             <form action="{{ route('posts') }}" method="post">
             @csrf
                 <div class="mb-4">
+                    @auth
                     <label for="body" class="sr-only" > Body </label>
                     <textarea name="body" id="body" cols="10" rows="1" class="bg-gray-100 border-2
                     w-full p-4 rounded-lg @error('body') border-red-500
@@ -20,6 +21,7 @@
                 <div class="">
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Post</button>
                 </div>
+                    @endauth
             </form>
 
             @if ($posts->count())
@@ -27,30 +29,29 @@
 
                 @foreach($posts as $post)
                     <div class="mb-4 p-1">
-                        <!-- {{var_dump(auth()->user()->is_admin)}} -->
                         <a href="" class="font-bold">{{ $post->user->name }}</a><span class="text-gray-600 text-sm p-4">{{$post->created_at->diffForHumans()}}</span>
                         <p class="mb-2">{{$post->body}}</p>
                         @auth
-                        @if ($post->ownedBy(auth()->user()) || auth()->user()->is_admin===1)
-                        <div>
+                        <div class="">
+                            @if ($post->ownedBy(auth()->user()) || auth()->user()->is_admin===1)
                                 <form action="{{ route('posts.destroy', $post) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-900">Delete</button>
+                                    <button type="submit" class="bg-red-500 text-white px-4 mb-2 py-2 rounded-lg">Delete</button>
                                 </form>
-                        @elseif($post->ownedBy(auth()->user()))
                                 <form action="{{ route('posts.edit', $post) }}" method="get">
-                                    <button type="submit" class="text-red-900">Edit
+                                    <button type="submit" class="bg-yellow-500 text-white px-4 mb-2 py-2 rounded-lg">Edit
                                 </form>
+                                @endif
                             </div>
-                        @endif
+                            @if($post->ownedBy(auth()->user()))
                             <div class="flex items-center">
                                 <form action="" method="POST" class="mr-1">
-                                    <input type="text" class="bg-gray-100 border-2
-                    w-full p-4 rounded-lg">
-                                    <button type="submit" class="text-blue-900 border-gray-400">Comment</button>
+                                    <input type="text" class="bg-gray-100 border-2 w-full p-4 rounded-lg">
+                                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Comment</button>
                                 </form>
                             </div>
+                            @endif
 
                         @endauth
 
