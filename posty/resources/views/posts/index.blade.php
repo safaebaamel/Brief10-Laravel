@@ -38,6 +38,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="text-red-900">Delete</button>
                                 </form>
+                        @elseif($post->ownedBy(auth()->user()))
                                 <form action="{{ route('posts.edit', $post) }}" method="get">
                                     <button type="submit" class="text-red-900">Edit
                                 </form>
