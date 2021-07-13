@@ -1,8 +1,11 @@
 @extends('layouts.app')
-
+@section('title',$detail->title)
 @section('content')
     <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg">
+            @if (Session::has('success'))
+                <p class="text-success"> {{session('success')}} </p>
+            @endif
             <form action="{{ route('posts') }}" method="post">
             @csrf
                 <div class="mb-4">
@@ -44,18 +47,35 @@
                                 </form>
                                 @endif
                             </div>
-                            @if($post->ownedBy(auth()->user()))
+                            @if(!$post->ownedBy(auth()->user()))
                             <div class="flex items-center">
-                                <form action="" method="POST" class="mr-1">
-                                    <input type="text" class="bg-gray-100 border-2 w-full p-4 rounded-lg">
+                                <form action="{{ url('save-comment/'.Str::slug($post->title).'/'.$detail->id) }}" method="POST" class="mr-1">
+                                    <input type="text" name="comment"class="bg-gray-100 border-2 w-full p-4 rounded-lg">
                                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Comment</button>
                                 </form>
                             </div>
                             @endif
-
+                        </div>
                         @endauth
-
-                    </div>
+                        <!-- fetch comments -->
+                        <div class="card my-4">
+                            <h5 class="card-header">Comments <span class="badge badge-dark">{{count($detail->comments)}}</span></h5>
+                            <div class="card-body">
+                                @if($detail->comments)
+                                    @foreach($detail->comments as $comment)
+                                        <blockquote class="blockquote">
+                                        <p class="mb-0">{{$comment->comment}}</p>
+                                        @if($comment->user_id==0)
+                                        <footer class="blockquote-footer">Admin</footer>
+                                        @else
+                                        <footer class="blockquote-footer">{{$comment->user->name}}</footer>
+                                        @endif
+                                        </blockquote>
+                                        <hr/>
+                                    @endforeach
+                                @endif
+                            </div>
+				        </div>
                 @endforeach
                 {{ $posts->links() }}
             @else

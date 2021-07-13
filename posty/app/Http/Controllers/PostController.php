@@ -15,7 +15,7 @@ class PostController extends Controller
     }
 
     public function store(Request $request) {
-        
+
         $this->validate($request, [
             'body' => 'required'
         ]);
@@ -52,6 +52,26 @@ class PostController extends Controller
         ]);
 
         return redirect('/posts');
+    }
+
+    // Post Details
+    public function detail(Request $request, $slug, $postId) {
+
+        $detail = Post::find($postId);
+        return view('detail', ['detail'=>$detail]);
+    }
+
+    // comment add
+    function save_comment(Request $request,$slug,$id){
+        $request->validate([
+            'comment'=>'required'
+        ]);
+        $data=new Comment;
+        $data->user_id=$request->user()->id;
+        $data->post_id=$id;
+        $data->comment=$request->comment;
+        $data->save();
+        return redirect('detail/'.$slug.'/'.$id)->with('success','Comment has been submitted.');
     }
 }
 

@@ -49,3 +49,8 @@ Route::post('/posts/{post}/likes', [postLikeController::class, 'store'])->name('
 
 // Admin Routes
 Route::get('/AdminHome',[DashboardController::class,'admin'])->name('AdminHome')->middleware('is_admin');
+
+// comments details
+
+Route::get('/detail/{slug}/{id}', [PostController::class, 'detail']);
+Route::post('/save_comment/{slug}/{id}', [PostController::class, 'save_comment']);
