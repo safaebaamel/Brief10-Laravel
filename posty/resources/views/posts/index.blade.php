@@ -48,7 +48,7 @@
                             </div>
                             @if(!$post->ownedBy(auth()->user()))
                             <div class="flex items-center">
-                                <form action="" method="POST" class="mr-1">
+                                <form action="{{ route('comments') }}" method="POST" class="mr-1">
                                     <input type="text" name="comment"class="bg-gray-100 border-2 w-full p-4 rounded-lg">
                                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Comment</button>
                                 </form>

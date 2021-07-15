@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\postLikeController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +53,5 @@ Route::get('/AdminHome',[DashboardController::class,'admin'])->name('AdminHome')
 
 // comments details
 
-Route::get('/detail/{slug}/{id}', [PostController::class, 'detail']);
-Route::post('/save_comment/{slug}/{id}', [PostController::class, 'save_comment']);
+Route::get('/comments', [CommentController::class, 'index'])->name('comments');
+Route::post('/comments', [CommentController::class, 'store']);
