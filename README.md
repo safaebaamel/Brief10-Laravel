@@ -19,7 +19,7 @@ PHP/API
 HTML/CSS/bootstrap/SASS
 Vue.js optionnel
 
-# le tableau de benchmarking des frameworks PHP:
+# le tableau de benchmarking des Frameworks PHP:
 
 ![frameworksphp](https://user-images.githubusercontent.com/57509402/124738239-a1165c00-df10-11eb-807b-b18648bae7b5.PNG)
 
