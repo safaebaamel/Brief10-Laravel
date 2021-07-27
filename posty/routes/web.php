@@ -53,5 +53,5 @@ Route::get('/AdminHome',[DashboardController::class,'admin'])->name('AdminHome')
 
 // comments details
 
-Route::get('/comments', [CommentController::class, 'index'])->name('comments');
-Route::post('/comments', [CommentController::class, 'store']);
+Route::get('/posts/{post}/comment' , [CommentController::class , 'index'])->name('posts.comment');
+Route::post('/posts/comment' , [CommentController::class , 'store'])->name('posts.makecomment');

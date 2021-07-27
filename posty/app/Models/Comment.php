@@ -9,16 +9,8 @@ class Comment extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'corp',
-        'post_id'
+        'user_id',
+        'post_id',
+        'comment'
     ];
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function ownedBy(User $user)
-    {
-        return ($user->id === $this->user_id);
-    }
 }
